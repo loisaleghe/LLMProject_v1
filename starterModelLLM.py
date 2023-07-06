@@ -9,50 +9,50 @@ if __name__ == '__main__':
     chat = ChatOpenAI(openai_api_key=os.environ['OPENAI_API_KEY'], temperature=0.0)
     chat
 
-    template_string = """ Translate the text \
-    that is delimited by triple backticks \
-    into a style that is {style}.
-    break each sentence into new line after 10 words
-    text: ```{text}```
-    """
-
-    prompt_template = ChatPromptTemplate.from_template(template_string)
-
-    customer_style = """American English \
-    in a calm and respectful tone
-    """
-
-    customer_email = """
-    Arr, \
-    I be fuming that me blender lid \
-    flew off and splattered me kitchen walls \
-    with smoothie! And to make matters worse, \
-    the warranty does not cover the cose of cleaning \
-    up me kitchen. I need your help right now, matey!
-    """
-
-    customer_message = prompt_template.format_messages(style=customer_style, text=customer_email)
-    customer_response = chat(customer_message)
-    print(customer_response.content)
-
-    service_reply = """
-    Hey there customer, \
-    the warranty does not cover cleaning \
-    expenses for your kitchen because it's \
-    your fault that you misused your blender by \
-    forgetting to put the lid on before starting \
-    the blender. \
-    Tough luck! see ya!
-    """
-
-    service_style_pirate = """\
-    a polite tone \
-    that speaks in English pirate\
-    """
-
-    service_message = prompt_template.format_messages(style=service_style_pirate, text=service_reply)
-    service_response = chat(service_message)
-    print(service_response.content)
+    # template_string = """ Translate the text \
+    # that is delimited by triple backticks \
+    # into a style that is {style}.
+    # break each sentence into new line after 10 words
+    # text: ```{text}```
+    # """
+    #
+    # prompt_template = ChatPromptTemplate.from_template(template_string)
+    #
+    # customer_style = """American English \
+    # in a calm and respectful tone
+    # """
+    #
+    # customer_email = """
+    # Arr, \
+    # I be fuming that me blender lid \
+    # flew off and splattered me kitchen walls \
+    # with smoothie! And to make matters worse, \
+    # the warranty does not cover the cose of cleaning \
+    # up me kitchen. I need your help right now, matey!
+    # """
+    #
+    # customer_message = prompt_template.format_messages(style=customer_style, text=customer_email)
+    # customer_response = chat(customer_message)
+    # print(customer_response.content)
+    #
+    # service_reply = """
+    # Hey there customer, \
+    # the warranty does not cover cleaning \
+    # expenses for your kitchen because it's \
+    # your fault that you misused your blender by \
+    # forgetting to put the lid on before starting \
+    # the blender. \
+    # Tough luck! see ya!
+    # """
+    #
+    # service_style_pirate = """\
+    # a polite tone \
+    # that speaks in English pirate\
+    # """
+    #
+    # service_message = prompt_template.format_messages(style=service_style_pirate, text=service_reply)
+    # service_response = chat(service_message)
+    # print(service_response.content)
 
     # LEARNING ABOUT OUTPUT PARSERS
 
@@ -68,10 +68,10 @@ if __name__ == '__main__':
     out there, but I think it's worth it for the extra features.\
     """
 
-    review_template = """\
+    review_template2 = """\
     For the following text, extract the following information:
     
-    gift: Was the item purchased as a gift for someone else? Answer True if yes, False if no or unknown \
+    gift: is it a gift or not? \
     delivery_days: How may days did it take for the product to be delivered? \
     price_value: Extract any sentences about the value or price of the product \
     
@@ -83,7 +83,7 @@ if __name__ == '__main__':
     text: {text}
     """
 
-    prompt_template1 = ChatPromptTemplate.from_template(review_template)
+    prompt_template1 = ChatPromptTemplate.from_template(review_template2)
     review_message = prompt_template1.format_messages(text=customer_review)
     review_response = chat(review_message)
     print(review_response.content)
