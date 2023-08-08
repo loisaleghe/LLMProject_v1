@@ -6,8 +6,10 @@ from langchain.memory import ConversationTokenBufferMemory
 from langchain.memory import ConversationSummaryBufferMemory
 from langchain.chains import ConversationChain
 
+from dotenv import load_dotenv, find_dotenv
+_= load_dotenv(find_dotenv())
 
-llm = ChatOpenAI(openai_api_key=os.environ['OPENAI_API_KEY'], temperature=0.0)
+llm = ChatOpenAI(temperature=0.0)
 memory = ConversationBufferMemory()
 conversation = ConversationChain(
     llm=llm,

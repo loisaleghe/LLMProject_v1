@@ -5,8 +5,11 @@ from langchain.prompts import ChatPromptTemplate
 from langchain.output_parsers import ResponseSchema
 from langchain.output_parsers import StructuredOutputParser
 
+from dotenv import load_dotenv, find_dotenv
+_= load_dotenv(find_dotenv())
+
 if __name__ == '__main__':
-    chat = ChatOpenAI(openai_api_key=os.environ['OPENAI_API_KEY'], temperature=0.0)
+    chat = ChatOpenAI(temperature=0.0)
     chat
 
     # template_string = """ Translate the text \

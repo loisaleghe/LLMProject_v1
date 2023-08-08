@@ -8,8 +8,8 @@ from IPython.display import display, Markdown
 from langchain.embeddings import OpenAIEmbeddings
 
 
-openai_api_key = os.environ['OPENAI_API_KEY']
-
+from dotenv import load_dotenv, find_dotenv
+_= load_dotenv(find_dotenv())
 
 # Get File
 file = 'OutdoorClothingCatalog_1000.csv'
@@ -50,10 +50,11 @@ qa_stuff = RetrievalQA.from_chain_type(
 )
 query = "Please list all your shirts with sun protection in a table in markdown and summarize each one"
 response = qa_stuff.run(query)
-display(Markdown(response))
-response = index.query(query, llm=llm)
-index = VectorstoreIndexCreator(
-    vectorstore_cls=DocArrayInMemorySearch,
-    embedding=embeddings,
-).from_loaders([loader])
+print(response)
+#Markdown(response)
+# response = index.query(query, llm=llm)
+# index = VectorstoreIndexCreator(
+#     vectorstore_cls=DocArrayInMemorySearch,
+#     embedding=embeddings,
+# ).from_loaders([loader])
 
