@@ -1,5 +1,3 @@
-import os
-
 from dotenv import load_dotenv, find_dotenv
 _= load_dotenv(find_dotenv())
 
@@ -52,7 +50,7 @@ new_examples = example_gen_chain.apply_and_parse(
 # print(new_examples[2])
 
 #COMBINE EXAMPLES
-# examples += new_examples
+examples += new_examples
 # print(qa.run(examples[5]["query"]))
 
 #IF YOU WANT TO SEE THE MANUAL EVALUATION
